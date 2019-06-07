@@ -2,9 +2,11 @@
   "name": "react-breadcrumbs-light",
   "version": "1.0.0",
   "description": "React Breadcrumbs customizable component & service",
-  "main": "./lib/Breadcrumbs.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "webpack"
+    "lint": "tslint -p tsconfig.json",
+    "build": "tsc"
   },
   "peerDependencies": {
     "@material-ui/core": "^4.0.1",
@@ -30,9 +32,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1",
     "webpack": "^4.5.0",
-    "webpack-cli": "^3.2.1",
-    "typescript": "^3.5.1"
+    "webpack-cli": "^3.2.1"
   },
   "keywords": [
     "React",

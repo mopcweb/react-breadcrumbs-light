@@ -16,7 +16,7 @@ import { IReactBreadcrumb, IReactRoute } from '../interfaces/breadcrumbs';
 
 const getBreadcrumbs = (
   routes: IReactRoute[], fullUrl: string, notFoundTitle?: string, notFoundIcon?: string
-) => {
+): IReactBreadcrumb[] => {
   // Var for array to return
   const breadcrumbs: IReactBreadcrumb[] = [];
 
@@ -53,7 +53,7 @@ const getBreadcrumbs = (
     if (!route && prevRoute && prevRoute.children) {
       route =
         prevRoute.children.find(item => item.link === link) ||
-        prevRoute.children.find(item => item.param);
+        prevRoute.children.find(item => !!item.param);
 
       // If foun children route and there is a param -> upate vars
       if (route && route.param && route.link === prevRoute.link + route.param) {
@@ -92,10 +92,10 @@ const getBreadcrumbs = (
 
     // If unit.title is not found -> skip if not last and push if last
     if (unit.title === notFoundTitle)
-      return i !== arr.length - 1 ? false : breadcrumbs.push(unit)
+      return i !== arr.length - 1 ? false : breadcrumbs.push(unit);
 
     // Push into array
-    breadcrumbs.push(unit)
+    breadcrumbs.push(unit);
   });
 
   // Return
@@ -112,4 +112,4 @@ const removeParams = (url: string): string => url.replace(/\?.*/gi, '');
 /*                              Export
 /* ------------------------------------------------------------------- */
 
-export default getBreadcrumbs
+export default getBreadcrumbs;
