@@ -1,0 +1,44 @@
+{
+  "name": "react-breadcrumbs-light",
+  "version": "1.0.0",
+  "description": "React Breadcrumbs customizable component & service",
+  "main": "./lib/Breadcrumbs.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.0.1",
+    "@material-ui/icons": "^4.0.1",
+    "@material-ui/styles": "^4.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.0.1",
+    "@material-ui/icons": "^4.0.1",
+    "@material-ui/styles": "^4.0.1",
+    "@types/node": "12.0.4",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^3.2.1",
+    "typescript": "^3.5.1"
+  },
+  "keywords": [
+    "React",
+    "Breadcrumbs",
+    "react-breadcrumbs"
+  ],
+  "author": "Daniil Moroz",
+  "license": "MIT"
+}
