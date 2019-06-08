@@ -15,13 +15,13 @@ import { IReactBreadcrumb, IReactRoute } from '../interfaces/breadcrumbs';
 /* ------------------------------------------------------------------- */
 
 const getBreadcrumbs = (
-  routes: IReactRoute[], fullUrl: string, notFoundTitle?: string, notFoundIcon?: string
+  routes: IReactRoute[], fullUrl: string, notFoundTitle?: string, notFoundIcon?: any
 ): IReactBreadcrumb[] => {
   // Var for array to return
   const breadcrumbs: IReactBreadcrumb[] = [];
 
   // Remove first '/' from url & remove params
-  let croppedUrl: string = removeParams(fullUrl.replace(/^\//, ''));
+  const croppedUrl: string = removeParams(fullUrl.replace(/^\//, ''));
 
   // Array of paths
   const paths: string[] = croppedUrl.split('/');
@@ -30,16 +30,10 @@ const getBreadcrumbs = (
   let link: string = '';
 
   // Var for prev route
-  let prevRoute: IReactRoute;
+  let prevRoute: IReactRoute | undefined;
 
   // Iterate over croppedUrl.slice('/') and create path for each link
   paths.forEach((item, i, arr) => {
-    // Define wheter the route is dynamic
-    let dynamic = false;
-
-    // Var for custom icon
-    let customIcon: string = '';
-
     // Update link
     link = link + '/' + item;
 
@@ -50,48 +44,35 @@ const getBreadcrumbs = (
     if (route) prevRoute = route;
 
     // If no route found -> try to find in its children by link or dynamic param
-    if (!route && prevRoute && prevRoute.children) {
+    if (!route && prevRoute && prevRoute.children)
       route =
         prevRoute.children.find(item => item.link === link) ||
-        prevRoute.children.find(item => !!item.param);
-
-      // If foun children route and there is a param -> upate vars
-      if (route && route.param && route.link === prevRoute.link + route.param) {
-        // Update dynamic vars
-        dynamic = true;
-        customIcon = route.icon;
-
-        // Reset route & prevRoute
-        route = (prevRoute as any) = undefined;
-      };
-    };
+        prevRoute.children.find(item => findParam(item.link));
 
     // Again: If there is route found -> save it as prev route
-    if (route) prevRoute = route
+    if (route) prevRoute = route;
+
+    // Define breadcrumbs unit title
+    const title: string = route
+      ? route.title
+        ? findParam(route.link)
+          ? decodeURIComponent(route.title + makeFirstLetterUp(item))
+          : decodeURIComponent(route.title)
+        : decodeURIComponent(makeFirstLetterUp(item))
+      : notFoundTitle
+        ? decodeURIComponent(notFoundTitle)
+        : decodeURIComponent('Page Not Found');
+
+    // Define breadcrumbs unit icon
+    const icon: any = route
+      ? route.icon
+      : notFoundIcon;
 
     // Unit to push into breadcrumbs array
-    const unit = {
-      link,
-      title: decodeURIComponent(
-        route && route.title
-          ? route.title
-          : dynamic
-            ? item
-            : notFoundTitle
-              ? notFoundTitle
-              : 'Page Not Found'
-      ),
-      icon: route
-        ? route.icon
-        : customIcon
-          ? customIcon
-          : notFoundIcon
-            ? notFoundIcon
-            : 'NotListedLocation'
-    };
+    const unit = { link, title, icon };
 
     // If unit.title is not found -> skip if not last and push if last
-    if (unit.title === notFoundTitle)
+    if (unit.title === notFoundTitle || unit.title === 'Page Not Found')
       return i !== arr.length - 1 ? false : breadcrumbs.push(unit);
 
     // Push into array
@@ -103,10 +84,19 @@ const getBreadcrumbs = (
 };
 
 /* ------------------------------------------------------------------- */
-/*                              Helper
+/*                              Helpers
 /* ------------------------------------------------------------------- */
 
+// =====> Remove params
 const removeParams = (url: string): string => url.replace(/\?.*/gi, '');
+
+// =====> Uppercase first letter
+const makeFirstLetterUp = (item: string): string =>
+  item.slice(0, 1).toUpperCase() + item.slice(1);
+
+// =====> Find param
+const findParam = (link: string): boolean =>
+  link.indexOf('/:') !== -1;
 
 /* ------------------------------------------------------------------- */
 /*                              Export

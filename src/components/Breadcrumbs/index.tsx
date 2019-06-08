@@ -4,26 +4,16 @@
 /*
 /* ################################################################### */
 
-import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-
-/* ------------------------------------------------------------------- */
-/*                              Material
-/* ------------------------------------------------------------------- */
-
-import { withStyles } from '@material-ui/styles';
-
-// =====> Components
-import Typography from '@material-ui/core/Typography';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import { Link, withRouter } from 'react-router-dom';
 
 /* ------------------------------------------------------------------- */
 /*                               Config
 /* ------------------------------------------------------------------- */
 
 // =====> Styles
-import styles from './styles';
+import './index.sass';
 
 // =====> Services
 import getBreadcrumbs from '../../services/BreadcrumbsService';
@@ -33,7 +23,7 @@ import getBreadcrumbs from '../../services/BreadcrumbsService';
 /* ------------------------------------------------------------------- */
 
 import {
-  ReactBreadcrumbsProps, IReactBreadcrumb
+  IReactBreadcrumb, ReactBreadcrumbsProps
 } from '../../interfaces/breadcrumbs';
 
 /* ------------------------------------------------------------------- */
@@ -41,7 +31,7 @@ import {
 /* ------------------------------------------------------------------- */
 
 const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
-   location, classes, routes, separator, icons, customClasses, notFoundTitle,
+   location, routes, separator, icons, customClasses, notFoundTitle,
    notFoundIcon
 }) => {
   // Get all breadcrumbs
@@ -53,90 +43,122 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
     ? icons
     : icons === false
       ? icons
-      : true
+      : true;
 
-  // Import MUI Icons if iconsEnabled
-  const Icons = iconsEnabled ? require('@material-ui/icons') : undefined;
+  /* ------------------------------------------------------------------- */
+  /*                          Custom classes
+  /* ------------------------------------------------------------------- */
 
   // Vars for custom classes
-  let rootClass: any,
-      iconClass: any,
-      titleClass: any,
-      linkClass: any,
-      currentLinkClass: any;
+  let rootClass: any;
+  let listClass: any;
+  let linkClass: any;
+  let currentLinkClass: any;
+  let iconClass: any;
+  let titleClass: any;
+  let separatorClass: any;
 
   // Specify if provided
   if (customClasses && customClasses.root)
     rootClass = customClasses.root;
-  if (customClasses && customClasses.icon)
-    iconClass = customClasses.icon;
-  if (customClasses && customClasses.title)
-    titleClass = customClasses.title;
+  if (customClasses && customClasses.list)
+    listClass = customClasses.list;
   if (customClasses && customClasses.link)
     linkClass = customClasses.link;
   if (customClasses && customClasses.currentLink)
     currentLinkClass = customClasses.currentLink;
+  if (customClasses && customClasses.icon)
+    iconClass = customClasses.icon;
+  if (customClasses && customClasses.title)
+    titleClass = customClasses.title;
+  if (customClasses && customClasses.separator)
+    separatorClass = customClasses.separator;
 
-  // Create appropriate Icon
-  const Icon = (item: IReactBreadcrumb) => {
-    // If icons not enabled -> stop
-    if (!iconsEnabled)
-      return;
+  /* ------------------------------------------------------------------- */
+  /*                          Link for prev routes
+  /* ------------------------------------------------------------------- */
 
-    // Var for MUI Icon
-    const Icon = (Icons as any)[item.icon];
-
-    // Return Icon
-    return <Icon className={`${classes.Icon}${iconClass ? ` ${iconClass}`: ''}`} />;
-  };
-
-  // Link for prev routes
   const link = (item: IReactBreadcrumb) => (
-    <Link
-      key={item.title}
-      to={item.link}
-      className={`${classes.Link}${linkClass ? ` ${linkClass}`: ''}`}>
-      {iconsEnabled && Icon(item)}
-      <span className={`${classes.Title}${titleClass ? ` ${titleClass}`: ''}`}>
-        {item.title}
-      </span>
-    </Link>
+    <React.Fragment key={item.title ? item.title + item.link : item.link}>
+      <li>
+        <Link
+          to={item.link}
+          className={
+            `ReactBreadcrumbsLight-Link ${linkClass ? ` ${linkClass}` : ''}`
+          }>
+
+          {iconsEnabled && item.icon &&
+            <span className={
+              `ReactBreadcrumbsLight-Icon ${iconClass ? ` ${iconClass}` : ''}`
+            }>
+              {item.icon}
+            </span>}
+
+          <span className={
+            `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
+          } style={{ WebkitBoxOrient: 'vertical' }}>
+            {item.title}
+          </span>
+        </Link>
+      </li>
+
+      <li className={
+        `ReactBreadcrumbsLight-Separator ${separatorClass ? ` ${separatorClass}` : ''}`
+      }>
+        {separator ? separator : '/'}
+      </li>
+    </React.Fragment>
   );
 
-  // Link for current route
+  /* ------------------------------------------------------------------- */
+  /*                         Link for current route
+  /* ------------------------------------------------------------------- */
+
   const currentLink = (item: IReactBreadcrumb) => (
-    <Typography
-      key={item.title}
+    <li
+      key={item.title ? item.title + item.link : item.link}
       className={
-        `${classes.Link} ${classes.Link_current}${linkClass ? ` ${linkClass}`: ''}${currentLinkClass ? ` ${currentLinkClass}`: ''}`
+        `ReactBreadcrumbsLight-Link ReactBreadcrumbsLight-Link_current \
+        ${linkClass ? ` ${linkClass}` : ''}\
+        ${currentLinkClass ? ` ${currentLinkClass}` : ''}`
       }>
-      {iconsEnabled && Icon(item)}
-      <span className={`${classes.Title}${titleClass ? ` ${titleClass}`: ''}`}>
+
+      {iconsEnabled && item.icon &&
+        <span className={
+          `ReactBreadcrumbsLight-Icon ${iconClass ? ` ${iconClass}` : ''}`
+        }>
+          {item.icon}
+        </span>}
+
+      <span className={
+        `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
+      } style={{ WebkitBoxOrient: 'vertical' }}>
         {item.title}
       </span>
-    </Typography>
+    </li>
   );
 
-  // Render
+  /* ------------------------------------------------------------------- */
+  /*                             Render
+  /* ------------------------------------------------------------------- */
+
   return (
-    <Breadcrumbs aria-label="Breadcrumb"
-      separator={separator ? separator : '/'}
-      className={
-        `${classes.Breadcrumbs} MuiToolbar-gutters${rootClass ? ` ${rootClass}`: ''}`
-      }>
-        {crumbs.map((item, i, arr) => i === arr.length - 1
-          ? currentLink(item)
-          : link(item))}
-    </Breadcrumbs>
-  )
+    <nav aria-label='Breadcrumb'
+      className={`ReactBreadcrumbsLight ${rootClass ? ` ${rootClass}` : ''}`}>
+        <ul className={
+          `ReactBreadcrumbsLight-List ${listClass ? ` ${listClass}` : ''}`
+        }>
+          {crumbs.map((item, i, arr) => i === arr.length - 1
+            ? currentLink(item)
+            : link(item))}
+        </ul>
+    </nav>
+  );
 };
 
 /* ------------------------------------------------------------------- */
 /*                               Export
 /* ------------------------------------------------------------------- */
 
-// Apply withRouter HOC
-const Routed = withRouter(Crumbs);
-
-// Export
-export default withStyles(styles)(Routed);
+// Apply withRouter HOC & Export
+export default withRouter(Crumbs);

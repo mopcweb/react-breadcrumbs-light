@@ -6,7 +6,13 @@
   "jsRules": {},
   "rules": {
     "no-console": false,
-    "quotemark": [true, "single"]
+    "quotemark": [true, "single"],
+    "curly": [true, "as-needed"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "no-shadowed-variable": false,
+    "interface-over-type-literal": false,
+    "ordered-imports": false,
+    "trailing-comma": false
   },
   "rulesDirectory": []
 }

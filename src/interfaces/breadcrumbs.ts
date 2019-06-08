@@ -10,8 +10,8 @@
 
 export interface IReactBreadcrumb {
   link: string;
-  title: string;
-  icon: string;
+  title?: string;
+  icon?: any;
 }
 
 /* ------------------------------------------------------------------- */
@@ -19,11 +19,10 @@ export interface IReactBreadcrumb {
 /* ------------------------------------------------------------------- */
 
 export interface IReactRoute {
-  title: string;
   link: string;
-  icon: string;
+  title?: string;
+  icon?: any;
   children?: IReactRoute[];
-  param?: string;
 }
 
 /* ------------------------------------------------------------------- */
@@ -31,17 +30,18 @@ export interface IReactRoute {
 /* ------------------------------------------------------------------- */
 
 export type ReactBreadcrumbsProps = {
-  classes: { [x: string]: string };
   routes: IReactRoute[];
   separator?: any;
   icons?: boolean;
   notFoundTitle?: string;
-  notFoundIcon?: string;
+  notFoundIcon?: any;
   customClasses?: {
     root?: string;
-    icon?: string;
-    title?: string;
+    list?: string;
     link?: string;
     currentLink?: string;
+    icon?: string;
+    title?: string;
+    separator?: string;
   };
-}
+};

@@ -6,6 +6,8 @@
     "outDir": "lib",
     "esModuleInterop": true,
     "jsx": "preserve",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true
   },
   "include": ["src"],

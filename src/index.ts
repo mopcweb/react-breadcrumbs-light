@@ -10,9 +10,9 @@
 
 import Breadcrumbs from './components/Breadcrumbs';
 import getBreadcrumbs from './services/BreadcrumbsService';
-// import {
-//   ReactBreadcrumbsProps, IReactBreadcrumb, IReactRoute
-// } from './interfaces/breadcrumbs';
+import {
+  IReactBreadcrumb, IReactRoute, ReactBreadcrumbsProps
+} from './interfaces/breadcrumbs';
 
 /* ------------------------------------------------------------------- */
 /*                              Export
@@ -21,7 +21,7 @@ import getBreadcrumbs from './services/BreadcrumbsService';
 export {
   Breadcrumbs,
   getBreadcrumbs,
-  // ReactBreadcrumbsProps,
-  // IReactBreadcrumb,
-  // IReactRoute
+  IReactBreadcrumb,
+  IReactRoute,
+  ReactBreadcrumbsProps
 };
