@@ -92,10 +92,10 @@ Similar to first required argument for Breadcrumbs service
 * notFoundTitle (string) -> title for not found pages. Default: 'Page Not Found'
 * notFoundIcon (any icon: string | html | component) -> icon for not found pages. Default: undefined
 * customClasses (object) -> classes for each element of Breadcrumbs component.
-  ** root (string) -> class for root element (nav)
-  ** list (string) -> class for list element (ul)
-  ** link (string) -> class for link element (react-router-dom Link component. Html 'a' element)
-  ** currentLink (string) -> class for currentLink element (li)
-  ** icon (string) -> class for icon element (span, which holds provided icon)
-  ** title (string) -> class for title element (span)
-  ** separator (string) -> class for separator element (li, which holds provided separator)
+  * root (string) -> class for root element (nav)
+  * list (string) -> class for list element (ul)
+  * link (string) -> class for link element (react-router-dom Link component. Html 'a' element)
+  * currentLink (string) -> class for currentLink element (li)
+  * icon (string) -> class for icon element (span, which holds provided icon)
+  * title (string) -> class for title element (span)
+  * separator (string) -> class for separator element (li, which holds provided separator)
