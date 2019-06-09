@@ -5,10 +5,16 @@
 /* ################################################################### */
 
 /* ------------------------------------------------------------------- */
-/*                             Interfaces
+/*                              Config
 /* ------------------------------------------------------------------- */
 
+// =====> Interfaces
 import { IReactBreadcrumb, IReactRoute } from '../interfaces/breadcrumbs';
+
+// =====> Helpers
+import {
+  removeParams, makeFirstLetterUp, findParam, findMin
+} from './helpers';
 
 /* ------------------------------------------------------------------- */
 /*                              Service
@@ -20,11 +26,22 @@ const getBreadcrumbs = (
   // Var for array to return
   const breadcrumbs: IReactBreadcrumb[] = [];
 
-  // Remove first '/' from url & remove params
-  const croppedUrl: string = removeParams(fullUrl.replace(/^\//, ''));
+  // Remove params
+  const croppedUrl: string = removeParams(fullUrl);
+
+  // Root route
+  const root = findMin(routes);
 
   // Array of paths
-  const paths: string[] = croppedUrl.split('/');
+  const paths: string[] = routes[root.index].link[0] === '/'
+    ? fullUrl === '/'
+      ? [fullUrl]
+      : croppedUrl.split('/')
+    : croppedUrl.split('/');
+
+  // Remove similar first routes
+  if (paths[0] === paths[1])
+    paths.splice(0, 1);
 
   // Var for changing link
   let link: string = '';
@@ -34,8 +51,17 @@ const getBreadcrumbs = (
 
   // Iterate over croppedUrl.slice('/') and create path for each link
   paths.forEach((item, i, arr) => {
-    // Update link
-    link = link + '/' + item;
+    /** Update link.
+    /*  First 2 conditions -> prevent duplicate '/'
+    /*  Last condition -> define whether to use or no '/' for first route
+    /*  depending on first
+    */
+    link =
+      link[link.length - 1] === '/' ||
+      item[0] === '/' ||
+      (routes[root.index].link[0] !== '/' && i === 0)
+        ? link + item
+        : link + '/' + item;
 
     // Get title & icon for route
     let route: IReactRoute | undefined = routes.find(item => item.link === link);
@@ -82,21 +108,6 @@ const getBreadcrumbs = (
   // Return
   return breadcrumbs;
 };
-
-/* ------------------------------------------------------------------- */
-/*                              Helpers
-/* ------------------------------------------------------------------- */
-
-// =====> Remove params
-const removeParams = (url: string): string => url.replace(/\?.*/gi, '');
-
-// =====> Uppercase first letter
-const makeFirstLetterUp = (item: string): string =>
-  item.slice(0, 1).toUpperCase() + item.slice(1);
-
-// =====> Find param
-const findParam = (link: string): boolean =>
-  link.indexOf('/:') !== -1;
 
 /* ------------------------------------------------------------------- */
 /*                              Export

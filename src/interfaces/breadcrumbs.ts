@@ -33,6 +33,7 @@ export type ReactBreadcrumbsProps = {
   routes: IReactRoute[];
   separator?: any;
   icons?: boolean;
+  titles?: boolean;
   notFoundTitle?: string;
   notFoundIcon?: any;
   customClasses?: {

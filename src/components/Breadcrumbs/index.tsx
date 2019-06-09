@@ -31,18 +31,25 @@ import {
 /* ------------------------------------------------------------------- */
 
 const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
-   location, routes, separator, icons, customClasses, notFoundTitle,
+   location, routes, separator, icons, titles, customClasses, notFoundTitle,
    notFoundIcon
 }) => {
   // Get all breadcrumbs
   const crumbs =
     getBreadcrumbs(routes, location.pathname, notFoundTitle, notFoundIcon);
 
-  // Enable icons
+  // Enable / disable icons
   const iconsEnabled = icons
     ? icons
     : icons === false
       ? icons
+      : true;
+
+  // Enable / disable titles
+  const titlesEnabled = titles
+    ? titles
+    : titles === false
+      ? titles
       : true;
 
   /* ------------------------------------------------------------------- */
@@ -94,11 +101,12 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
               {item.icon}
             </span>}
 
-          <span className={
-            `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
-          } style={{ WebkitBoxOrient: 'vertical' }}>
-            {item.title}
-          </span>
+          {titlesEnabled && item.title &&
+            <span className={
+              `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
+            } style={{ WebkitBoxOrient: 'vertical' }}>
+              {item.title}
+            </span>}
         </Link>
       </li>
 
@@ -119,7 +127,7 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
       key={item.title ? item.title + item.link : item.link}
       className={
         `ReactBreadcrumbsLight-Link ReactBreadcrumbsLight-Link_current \
-        ${linkClass ? ` ${linkClass}` : ''}\
+        ${linkClass ? ` ${linkClass}` : ''} \
         ${currentLinkClass ? ` ${currentLinkClass}` : ''}`
       }>
 
@@ -130,11 +138,12 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
           {item.icon}
         </span>}
 
-      <span className={
-        `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
-      } style={{ WebkitBoxOrient: 'vertical' }}>
-        {item.title}
-      </span>
+      {titlesEnabled && item.title &&
+        <span className={
+          `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
+        } style={{ WebkitBoxOrient: 'vertical' }}>
+          {item.title}
+        </span>}
     </li>
   );
 

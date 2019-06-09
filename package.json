@@ -1,7 +1,7 @@
 {
   "name": "react-breadcrumbs-light",
-  "version": "1.0.5",
-  "description": "React Breadcrumbs customizable component & service",
+  "version": "1.0.6",
+  "description": "React Breadcrumbs customizable and easy to use component & service",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -42,5 +42,9 @@
     "react-breadcrumbs"
   ],
   "author": "Daniil Moroz",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mopcweb/react-breadcrumbs-light"
+  }
 }
