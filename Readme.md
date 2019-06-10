@@ -59,12 +59,14 @@ There are 2 require arguments and 2 optional:
 
   ```
 
-__Required fields__:
+__Required fields:__
+
 | Title | Type   | Description      |
 | ----- | ------ | ---------------- |
 | link  | string | breadcrumb link  |
 
 __Optional fields:__
+
 | Title | Type   | Description      |
 | ----- | ------ | ---------------- |
 | title | string | breadcrumb title |
