@@ -1,13 +1,21 @@
+
 # React Breadcrumbs Light
 
-Soon will be provided demo page on github
+[![GitHub version](https://img.shields.io/badge/version-1.1.0-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
+
+## Demo
+
+[See demo here](https://mopcweb.github.io/react-breadcrumbs-light)
+
+## Description
 
 Easy to use breadcrumbs for React.
 
 The package includes:
-  * Breadcrumbs component: just import and use it. Could be manually configured and styled.
-  * Service: just call it in some root component and it will be returning current breadcrumbs
-  * Types for both
+
+ - Service: just call it in some root component and it will be returning current breadcrumbs array
+ - Breadcrumbs component: just import and use it. Could be manually configured and styled
+ - TS Types for both
 
 ## Installation
 
@@ -19,7 +27,7 @@ npm i react-breadcrumbs-light
 
 ## Breadcrumbs service (function getBreadcrumbs)
 
-Returns array of breadcrumbs. Example:
+Returns an array of breadcrumbs. Example:
 
 ```js
 
@@ -31,47 +39,57 @@ Returns array of breadcrumbs. Example:
 
 ```
 
-There is 2 require arguments and 2 optional:
+There are 2 require arguments and 2 optional:
 
-### Required:
+### Breadcrumbs service required arguments:
 
-1. Routes
+1. __Routes__
 
   Example:
 
   ```js
 
-  const routes = [
-    { title: 'Home', link: '/', icon: 'any icon: string | html | component' },
+  const Routes = [
+    { title: 'Home', link: '/', icon: 'any icon: string | html | svg | component' },
     { title: 'Clients', link: '/clients', icon: '...', children: [
       { title: 'Client № - ', link: '/clients/:id', icon: '...' },
       { title: 'Settings', link: '/clients/settings', icon: '✅' }
     ] }
-  ]
+  ];
 
   ```
 
-  In Routes array for each object the only _necessary_ field is 'link', which used as breadcrumb
-  and as 'title', if it is not provided.
+__Required fields__:
+| Title | Type   | Description      |
+| ----- | ------ | ---------------- |
+| link  | string | breadcrumb link  |
 
-  'link' field may contain dynamic routes (ex.: '/route/:id', just as react-router).
-  For dynamic routes 'title' field will be used together with current route, if provided.
+__Optional fields:__
+| Title | Type   | Description      |
+| ----- | ------ | ---------------- |
+| title | string | breadcrumb title |
+| icon  | any    | breadcrumb icon  |
 
-  _Optionals_ are:
-    * title (string) -> title to show
-    * icon (any: string | html | component) -> icon to show
-    * children (array as Routes array itself) -> for nested routes.
+__Features__:
 
-2. FullUrl
+ - if __title__ is not provided, link will be used as breadcrumb title (First letter uppercased)
+ - __link__ field may contain dynamic routes (ex.: '/route/:id', just as react-router)
+ - for dynamic routes 'title' field will be used together with current route, if provided.
 
-  Current location:
-    * window.location.pathname
-    * if using withRouter HOC of react-router-dom: location.pathname
+ 2. __FullUrl__
 
-### Optional:
+  It should be a current location, for ex.:
 
-1. notFoundTitle (string) - title for not found route. Default - 'Page Not Found'
-2. notFoundIcon (any) - icon for not found route. Default - undefined
+ - __window.location.pathname__
+ - if using withRouter HOC of react-router-dom: __location.pathname__ prop
+
+
+### Breadcrumbs service optional arguments:
+
+| Title         | Type   | Description               | Default          |
+| ------------- | ------ | ------------------------- | ---------------- |
+| notFoundTitle | string | title for not found route | 'Page Not Found' |
+| notFoundIcon  | any    | icon for not found route  | undefined        |
 
 ## Breadcrumbs component
 
@@ -87,22 +105,29 @@ Example:
 
 There is only 1 required argument. And bunch of optional.
 
-### Required
+### Breadcrumbs component required argument
 
-Similar to first required argument for Breadcrumbs service
+Similar to first required argument for Breadcrumbs service - __Routes__ array
 
-### Optional
+### Breadcrumbs component optional argument
 
-* separator (any icon: string | html | component) -> separator for crumbs. Default: '/'
-* icons (boolean) -> whether to show icons. Default: true
-* titles (boolean) -> whether to show icons. Default: true
-* notFoundTitle (string) -> title for not found pages. Default: 'Page Not Found'
-* notFoundIcon (any icon: string | html | component) -> icon for not found pages. Default: undefined
-* customClasses (object) -> classes for each element of Breadcrumbs component.
-  * root (string) -> class for root element (nav)
-  * list (string) -> class for list element (ul)
-  * link (string) -> class for link element (react-router-dom Link component. Html 'a' element)
-  * currentLink (string) -> class for currentLink element (li)
-  * icon (string) -> class for icon element (span, which holds provided icon)
-  * title (string) -> class for title element (span)
-  * separator (string) -> class for separator element (li, which holds provided separator)
+| Title          | Type    | Description               | Default          |
+| -------------- | ------- | ------------------------- | ---------------- |
+| separator      | any     | separator for crumbs      | '/'              |
+| icons          | boolean | whether to show icons     | true             |
+| titles         | boolean | whether to show titles    | true             |
+| notFoundTitle  | string  | title for not found pages | 'Page Not Found' |
+| notFoundIcon   | any     | icon for not found pages  | undefined        |
+| customClasses  | object  | classes for each element of Breadcrumbs component | - |
+
+__customClasses__
+
+| Title       | Type    | Description                   | Html Element              |
+| ----------- | ------- | ----------------------------- | ------------------------- |
+| root        | string  | class for root element        | nav 	                    |
+| list        | string  | class for list element        | ul 		                    |
+| link        | string  | class for link element        | a 	                      |
+| currentLink | string  | class for currentLink element | li   	                    |
+| icon        | string  | class for icon element        | span (holder for icon)    |
+| title       | string  | class for title element       | span 	                    |
+| separator   | string  | class for separator element   | li (holder for separator) |
