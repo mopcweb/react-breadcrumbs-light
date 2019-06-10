@@ -1,5 +1,9 @@
+### Directories
 src
 demo
+/develop
+
+### Files
 .babelrc
 webpack.config.js
 tsconfig.json
