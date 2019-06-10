@@ -53,5 +53,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mopcweb/react-breadcrumbs-light"
-  }
+  },
+  "homepage": "https://mopcweb.github.io/react-breadcrumbs-light"
 }
