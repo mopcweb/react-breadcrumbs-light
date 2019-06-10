@@ -9,6 +9,14 @@ The package includes:
   * Service: just call it in some root component and it will be returning current breadcrumbs
   * Types for both
 
+## Installation
+
+```bash
+
+npm i react-breadcrumbs-light
+
+```
+
 ## Breadcrumbs service (function getBreadcrumbs)
 
 Returns array of breadcrumbs. Example:
@@ -29,42 +37,41 @@ There is 2 require arguments and 2 optional:
 
 1. Routes
 
-Example:
+  Example:
 
-```js
+  ```js
 
-const routes = [
-  { title: 'Home', link: '/', icon: 'any icon: string | html | component' },
-  { title: 'Clients', link: '/clients', icon: '...', children: [
-    { title: 'Client № - ', link: '/clients/:id', icon: '...' },
-    { title: 'Settings', link: '/clients/settings', icon: '✅' }
-  ] }
-]
+  const routes = [
+    { title: 'Home', link: '/', icon: 'any icon: string | html | component' },
+    { title: 'Clients', link: '/clients', icon: '...', children: [
+      { title: 'Client № - ', link: '/clients/:id', icon: '...' },
+      { title: 'Settings', link: '/clients/settings', icon: '✅' }
+    ] }
+  ]
 
-```
+  ```
 
-In Routes array for each object the only _necessary_ field is 'link', which used as breadcrumb
-and as 'title', if it is not provided.
+  In Routes array for each object the only _necessary_ field is 'link', which used as breadcrumb
+  and as 'title', if it is not provided.
 
-'link' field may contain dynamic routes (ex.: '/route/:id', just as react-router).
-For dynamic routes 'title' field will be used together with current route, if provided.
+  'link' field may contain dynamic routes (ex.: '/route/:id', just as react-router).
+  For dynamic routes 'title' field will be used together with current route, if provided.
 
-_Optionals_ are:
-  * title (string) -> title to show
-  * icon (any: string | html | component) -> icon to show
-  * children (array as Routes array itself) -> for nested routes.
+  _Optionals_ are:
+    * title (string) -> title to show
+    * icon (any: string | html | component) -> icon to show
+    * children (array as Routes array itself) -> for nested routes.
 
 2. FullUrl
 
-Current location:
-  * window.location.pathname
-  * if using withRouter HOC of react-router-dom: location.pathname
+  Current location:
+    * window.location.pathname
+    * if using withRouter HOC of react-router-dom: location.pathname
 
 ### Optional:
 
 1. notFoundTitle (string) - title for not found route. Default - 'Page Not Found'
 2. notFoundIcon (any) - icon for not found route. Default - undefined
-
 
 ## Breadcrumbs component
 

@@ -4,9 +4,9 @@
 /*
 /* ################################################################### */
 
-import * as React from 'react';
+import React, { Fragment } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
 
 /* ------------------------------------------------------------------- */
 /*                               Config
@@ -21,7 +21,7 @@ import {
 } from '../../interfaces/breadcrumbs';
 
 // =====> Services
-import getBreadcrumbs from '../../services/BreadcrumbsService';
+import { getBreadcrumbs } from '../../services';
 
 /* ------------------------------------------------------------------- */
 /*                             Component
@@ -35,14 +35,14 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
   const crumbs =
     getBreadcrumbs(routes, location.pathname, notFoundTitle, notFoundIcon);
 
-  // Enable / disable icons
+  // Enable icons
   const iconsEnabled = icons
     ? icons
     : icons === false
       ? icons
       : true;
 
-  // Enable / disable titles
+  // Enable titles
   const titlesEnabled = titles
     ? titles
     : titles === false
@@ -54,13 +54,13 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
   /* ------------------------------------------------------------------- */
 
   // Vars for custom classes
-  let rootClass: any;
-  let listClass: any;
-  let linkClass: any;
-  let currentLinkClass: any;
-  let iconClass: any;
-  let titleClass: any;
-  let separatorClass: any;
+  let rootClass: any,
+      listClass: any,
+      linkClass: any,
+      currentLinkClass: any,
+      iconClass: any,
+      titleClass: any,
+      separatorClass: any;
 
   // Specify if provided
   if (customClasses && customClasses.root)
@@ -83,13 +83,11 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
   /* ------------------------------------------------------------------- */
 
   const link = (item: IReactBreadcrumb) => (
-    <React.Fragment key={item.title ? item.title + item.link : item.link}>
+    <Fragment key={item.title ? item.title + item.link : item.link}>
       <li>
         <Link
           to={item.link}
-          className={
-            `ReactBreadcrumbsLight-Link ${linkClass ? ` ${linkClass}` : ''}`
-          }>
+          className={`ReactBreadcrumbsLight-Link ${linkClass ? ` ${linkClass}` : ''}`}>
 
           {iconsEnabled && item.icon &&
             <span className={
@@ -112,7 +110,7 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
       }>
         {separator ? separator : '/'}
       </li>
-    </React.Fragment>
+    </Fragment>
   );
 
   /* ------------------------------------------------------------------- */
@@ -123,9 +121,7 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
     <li
       key={item.title ? item.title + item.link : item.link}
       className={
-        `ReactBreadcrumbsLight-Link ReactBreadcrumbsLight-Link_current \
-        ${linkClass ? ` ${linkClass}` : ''} \
-        ${currentLinkClass ? ` ${currentLinkClass}` : ''}`
+        `ReactBreadcrumbsLight-Link ReactBreadcrumbsLight-Link_current ${linkClass ? ` ${linkClass}` : ''}${currentLinkClass ? ` ${currentLinkClass}` : ''}`
       }>
 
       {iconsEnabled && item.icon &&
@@ -149,11 +145,9 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
   /* ------------------------------------------------------------------- */
 
   return (
-    <nav aria-label='Breadcrumb'
+    <nav aria-label="Breadcrumb"
       className={`ReactBreadcrumbsLight ${rootClass ? ` ${rootClass}` : ''}`}>
-        <ul className={
-          `ReactBreadcrumbsLight-List ${listClass ? ` ${listClass}` : ''}`
-        }>
+        <ul className={`ReactBreadcrumbsLight-List ${listClass ? ` ${listClass}` : ''}`}>
           {crumbs.map((item, i, arr) => i === arr.length - 1
             ? currentLink(item)
             : link(item))}

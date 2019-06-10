@@ -1,4 +1,5 @@
 src
+demo
 .babelrc
 webpack.config.js
 tsconfig.json
