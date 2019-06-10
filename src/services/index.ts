@@ -1,6 +1,6 @@
 /* ################################################################### */
 /*
-/*  Root file for components
+/*  Root file for services
 /*
 /* ################################################################### */
 
@@ -8,12 +8,19 @@
 /*                             Import all
 /* ------------------------------------------------------------------- */
 
-import Breadcrumbs from './Breadcrumbs';
+import getBreadcrumbs from './BreadcrumbsService';
+import {
+  removeParams, makeFirstLetterUp, findParam, findMin
+} from './helpers';
 
 /* ------------------------------------------------------------------- */
 /*                              Export
 /* ------------------------------------------------------------------- */
 
 export {
-  Breadcrumbs
+  getBreadcrumbs,
+  removeParams,
+  makeFirstLetterUp,
+  findParam,
+  findMin
 };

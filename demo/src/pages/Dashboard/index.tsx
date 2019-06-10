@@ -12,7 +12,6 @@ import { Breadcrumbs } from 'react-breadcrumbs-light'
 /*                             Components
 /* ------------------------------------------------------------------- */
 
-// import { Breadcrumbs } from '../../components';
 import Header from './Header';
 import Nav from './Nav';
 

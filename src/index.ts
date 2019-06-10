@@ -8,11 +8,11 @@
 /*                              Import
 /* ------------------------------------------------------------------- */
 
-import Breadcrumbs from './components/Breadcrumbs';
-import getBreadcrumbs from './services/BreadcrumbsService';
+import { Breadcrumbs } from './components';
+import { getBreadcrumbs } from './services';
 import {
   IReactBreadcrumb, IReactRoute, ReactBreadcrumbsProps
-} from './interfaces/breadcrumbs';
+} from './interfaces';
 
 /* ------------------------------------------------------------------- */
 /*                              Export

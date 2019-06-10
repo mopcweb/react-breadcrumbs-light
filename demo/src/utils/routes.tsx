@@ -5,7 +5,7 @@
 /* ################################################################### */
 
 import React from 'react';
-// import { IReactRoute } from 'react-breadcrumbs-light';
+import { IReactRoute } from 'react-breadcrumbs-light';
 
 /* ------------------------------------------------------------------- */
 /*                             Material
@@ -18,12 +18,6 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import TodayIcon from '@material-ui/icons/Today';
 import ViewDayIcon from '@material-ui/icons/ViewDay';
 import SettingsIcon from '@material-ui/icons/Settings';
-
-/* ------------------------------------------------------------------- */
-/*                             Interface
-/* ------------------------------------------------------------------- */
-
-import { IReactRoute } from '../interfaces/breadcrumbs';
 
 /* ------------------------------------------------------------------- */
 /*                               Routes

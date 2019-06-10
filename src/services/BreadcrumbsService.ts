@@ -9,7 +9,7 @@
 /* ------------------------------------------------------------------- */
 
 // =====> Interfaces
-import { IReactBreadcrumb, IReactRoute } from '../interfaces/breadcrumbs';
+import { IReactBreadcrumb, IReactRoute } from '../interfaces';
 
 // =====> Helpers
 import {
@@ -49,9 +49,10 @@ const getBreadcrumbs = (
   // Var for prev route
   let prevRoute: IReactRoute | undefined;
 
-  // Iterate over croppedUrl.slice('/') and create path for each link
+  // Iterate over paths and breadcrumbs unit
   paths.forEach((item, i, arr) => {
-    /** Update link.
+    /**
+    /*  Update link.
     /*  First 2 conditions -> prevent duplicate '/'
     /*  Last condition -> define whether to use or no '/' for first route
     /*  depending on first
@@ -63,7 +64,7 @@ const getBreadcrumbs = (
         ? link + item
         : link + '/' + item;
 
-    // Get title & icon for route
+    // Get appropriate route
     let route: IReactRoute | undefined = routes.find(item => item.link === link);
 
     // If there is route found -> save it as prev route

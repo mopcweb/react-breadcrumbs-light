@@ -18,10 +18,10 @@ import './index.sass';
 // =====> Interfaces
 import {
   IReactBreadcrumb, ReactBreadcrumbsProps
-} from '../../interfaces/breadcrumbs';
+} from '../../interfaces';
 
 // =====> Services
-import getBreadcrumbs from '../../services/BreadcrumbsService';
+import { getBreadcrumbs } from '../../services';
 
 /* ------------------------------------------------------------------- */
 /*                             Component

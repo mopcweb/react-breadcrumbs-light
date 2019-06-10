@@ -1,7 +1,7 @@
 
 # React Breadcrumbs Light
 
-[![GitHub version](https://img.shields.io/badge/version-1.1.0-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
+[![GitHub version](https://img.shields.io/badge/version-1.1.1-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![npm version](https://img.shields.io/badge/npm-v1.1.1-brightgreen.svg)](https://www.npmjs.com/package/react-breadcrumbs-light) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
 
 ## Demo
 
@@ -65,12 +65,14 @@ __Required fields:__
 | ----- | ------ | ---------------- |
 | link  | string | breadcrumb link  |
 
+
 __Optional fields:__
 
 | Title | Type   | Description      |
 | ----- | ------ | ---------------- |
 | title | string | breadcrumb title |
 | icon  | any    | breadcrumb icon  |
+
 
 __Features__:
 
@@ -121,6 +123,7 @@ Similar to first required argument for Breadcrumbs service - __Routes__ array
 | notFoundTitle  | string  | title for not found pages | 'Page Not Found' |
 | notFoundIcon   | any     | icon for not found pages  | undefined        |
 | customClasses  | object  | classes for each element of Breadcrumbs component | - |
+
 
 __customClasses__
 

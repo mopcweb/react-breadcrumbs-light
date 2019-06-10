@@ -1,12 +1,13 @@
 {
   "name": "react-breadcrumbs-light",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React Breadcrumbs customizable and easy to use component & service",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "dev": "cd demo && npm start",
+    "dev": "cd develop && npm start",
     "lint": "tslint -p tsconfig.json",
+    "demo": "cd demo && npm start",
     "build": "rm -rf lib && webpack",
     "deploy": "cd demo && gh-pages -d build"
   },

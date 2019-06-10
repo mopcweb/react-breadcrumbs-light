@@ -1,30 +1,19 @@
 /* ################################################################### */
 /*
-/*  Root file for services
+/*  Root components file
 /*
 /* ################################################################### */
 
 /* ------------------------------------------------------------------- */
-/*                             Import all
+/*                              Import
 /* ------------------------------------------------------------------- */
 
-import {
-  formUrlEncoded, removeParams, isEmpty, getDaysInMonth,
-  makeFirstLetterUp, findParam, findMin
-} from './helpers';
-import getBreadcrumbs from './BreadcrumbsService';
+import Breadcrumbs from './Breadcrumbs';
 
 /* ------------------------------------------------------------------- */
 /*                              Export
 /* ------------------------------------------------------------------- */
 
 export {
-  getBreadcrumbs,
-  formUrlEncoded,
-  removeParams,
-  isEmpty,
-  getDaysInMonth,
-  makeFirstLetterUp,
-  findParam,
-  findMin,
+  Breadcrumbs
 };
