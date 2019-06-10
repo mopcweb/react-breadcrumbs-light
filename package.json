@@ -5,8 +5,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "dev": "cd demo && npm start",
     "lint": "tslint -p tsconfig.json",
-    "build": "rm -rf lib && webpack"
+    "build": "rm -rf lib && webpack",
+    "deploy": "cd demo && gh-pages -d build"
   },
   "peerDependencies": {
     "react": "^16.8.6",
