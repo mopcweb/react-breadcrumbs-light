@@ -56,7 +56,7 @@ const Month: React.FC<Props> = () => {
   // Render
   return (
     <Fragment>
-      <div style={{ textAlign: 'center' }}>Your choice: {month} - {monthIndex}</div>
+      <div style={{ textAlign: 'center' }}>Your choice: {month}</div>
 
       <div style={{
          margin: '40px auto', display: 'flex', justifyContent: 'flex-start',
@@ -64,7 +64,7 @@ const Month: React.FC<Props> = () => {
       }}>
         {dates.map(item => (
           <Link to={`${calendar}/${month}/${item}th`} key={item} style={{ width: '25%' }}>
-            <Button>Select {item}th</Button>
+            <Button style={{ width: '100%' }}>Select {item}th</Button>
           </Link>
         ))}
       </div>

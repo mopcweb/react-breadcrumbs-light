@@ -34,11 +34,11 @@ export const login: string = '/login';
 export const logout: string = '/logout';
 
 // =====> Dashboard
-export const dashboard: string = '/';
-export const home: string = dashboard;
-export const clients: string = '/clients';
-export const calendar: string = '/calendar';
-export const settings: string = '/settings';
+export const dashboard: string = '/react-breadcrumbs-light';
+export const home: string = dashboard + '/home';
+export const clients: string = home + '/clients';
+export const calendar: string = home + '/calendar';
+export const settings: string = home + '/settings';
 
 /* ------------------------------------------------------------------- */
 /*                Routes array for nav & breadcrumbs

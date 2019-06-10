@@ -5,7 +5,7 @@
 /* ################################################################### */
 
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 /* ------------------------------------------------------------------- */
 /*                               Config
@@ -28,6 +28,7 @@ const App: React.FC = () => (
   <Fragment>
     <Router>
       <Switch>
+        <Redirect exact from='/' to={dashboard} />
         <Route path={dashboard} component={Dashboard} />
         <Route component={NotFound} />
       </Switch>

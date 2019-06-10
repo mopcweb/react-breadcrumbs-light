@@ -4,7 +4,7 @@
 /*
 /* ################################################################### */
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 /* ------------------------------------------------------------------- */
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 /* ------------------------------------------------------------------- */
 
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 /* ------------------------------------------------------------------- */
 /*                               Config
@@ -29,20 +30,40 @@ type Props = {
 /*                              Component
 /* ------------------------------------------------------------------- */
 
-const Clients: React.FC<Props> = () => (
-  <Fragment>
-    <div style={{ textAlign: 'center' }}>Clients list works</div>
+const Clients: React.FC<Props> = () => {
+  // Default client
+  const defaultClient: string = 'Some awesome client';
 
-    <div style={{ margin: '40px auto', display: 'flex', justifyContent: 'space-around' }}>
-      <Link to={`${clients}/Some awesome client`}>
-        <Button>Go to Some awesome client</Button>
-      </Link>
-      <Link to={`${clients}/settings`}>
-        <Button>Go to clients Settings</Button>
-      </Link>
-    </div>
-  </Fragment>
-);
+  // State for client name
+  const [client, setClient]: [string, Function] = useState(defaultClient);
+
+  // Handle input change
+  const handleChange = (e: any) => setClient(e.target.value || defaultClient);
+
+  // Render
+  return (
+    <Fragment>
+      <div style={{ textAlign: 'center' }}>Clients list works</div>
+
+      <div style={{ margin: '40px auto', display: 'flex', justifyContent: 'space-around' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', flexGrow: 1, width: '50%' }}>
+          <Input
+            placeholder='Set client name to navigate to'
+            style={{ margin: '0 20px', flexGrow: 1 }}
+            onChange={handleChange}
+          />
+          <Link to={`${clients}/${client}`}>
+            <Button>Go to {client}</Button>
+          </Link>
+        </div>
+
+        <Link to={`${clients}/settings`} style={{ display: 'flex', justifyContent: 'center', width: '50%' }}>
+          <Button>Go to clients Settings</Button>
+        </Link>
+      </div>
+    </Fragment>
+  )
+};
 
 /* ------------------------------------------------------------------- */
 /*                               Export

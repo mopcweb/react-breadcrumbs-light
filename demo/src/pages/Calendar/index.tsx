@@ -47,7 +47,7 @@ const Calendar: React.FC<Props> = () => {
       }}>
         {months.map(item => (
           <Link to={`${calendar}/${item}`} key={item} style={{ width: '25%' }}>
-            <Button>Select {item}</Button>
+            <Button style={{ width: '100%' }}>Select {item}</Button>
           </Link>
         ))}
       </div>

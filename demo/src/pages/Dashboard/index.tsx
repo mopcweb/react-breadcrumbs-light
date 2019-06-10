@@ -5,7 +5,7 @@
 /* ################################################################### */
 
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { Breadcrumbs } from 'react-breadcrumbs-light'
 
 /* ------------------------------------------------------------------- */
@@ -37,7 +37,7 @@ import NotListedLocationIcon from '@material-ui/icons/NotListedLocation';
 /* ------------------------------------------------------------------- */
 
 // =====> Routes
-import { home, clients, calendar, settings } from '../../utils/routes';
+import { dashboard, home, clients, calendar, settings } from '../../utils/routes';
 
 import { routes } from '../../utils/routes';
 
@@ -69,6 +69,7 @@ const Dashboard: React.FC<Props> = ({ classes }) => {
 
       <div className={classes.Wrapper}>
         <Switch>
+          <Redirect exact from={dashboard} to={home} />
           <Route exact path={home} component={Home} />
           <Route exact path={clients} component={Clients} />
           <Route exact path={`${clients}/settings`} component={Settings} />
