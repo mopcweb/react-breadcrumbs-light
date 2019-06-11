@@ -33,7 +33,7 @@ const Home: React.FC<Props> = ({ classes }) => {
   { title: 'Home', link: home, icon: '<HomeIcon />' }, \n
   { title: 'Clients', link: clients, icon: '<ListIcon />', children: [ \n
     { title: 'Settings', link: clients + '/settings', icon: '<SettingsIcon />' }, \n
-    { title: 'Client № - ', link: clients + '/:id', icon: '<PersonIcon />' } \n
+    { title: 'Client № - ', suffix: ', welcome!', link: clients + '/:id', icon: '<PersonIcon />' } \n
   ] }, \n
   { title: 'Calendar', link: calendar, icon: <CalendarTodayIcon />, children: [ \n
     { title: 'Month: ', link: calendar + '/:month', icon: <TodayIcon />, children: [ \n
