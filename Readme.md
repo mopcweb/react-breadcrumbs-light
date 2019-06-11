@@ -1,5 +1,3 @@
-
-
 # React Breadcrumbs Light
 
 [![GitHub version](https://img.shields.io/badge/version-1.1.2-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![npm version](https://img.shields.io/npm/v/react-breadcrumbs-light.svg)](https://www.npmjs.com/package/react-breadcrumbs-light) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
@@ -47,12 +45,12 @@ const crumbs = getBreadcrumbs(Routes, window.location);
 
 There are __2 required__ arguments and 2 optional:
 
-| Title         | Type     | Description                                | Default          |
-| :-----:       | :------: | :----------------------------------------: | :--------------: |
-| __routes *__  | _array_  | array of route objects ([see example below](https://www.npmjs.com/package/react-breadcrumbs-light#routes))         | -                |
-| __fullUrl *__ | _string_ | current location full path ([see example below](https://www.npmjs.com/package/react-breadcrumbs-light#fullurl))        | -                |
-| notFoundTitle | _string_ | title for not found route                  | 'Page Not Found' |
-| notFoundIcon  | _any_    | icon for not found route                   | undefined        |
+| Title         | Type     | Description                                | Default           |
+| :-----:       | :------: | :----------------------------------------: | :---------------: |
+| __routes *__  | _array_  | array of route objects ([see example below](#routes)) | -      |
+| __fullUrl *__ | _string_ | current location full path ([see example below](#fullurl)) | - |
+| notFoundTitle | _string_ | title for not found route                  | 'Page Not Found'  |
+| notFoundIcon  | _any_    | icon for not found route                   | undefined         |
 
 ### Routes
 
@@ -108,15 +106,15 @@ Example:
 
 There is only 1 __required__ argument. And bunch of optional:
 
-| Title          | Type      | Description                                       | Default   |
-| :------------: | :-------: | :-----------------------------------------------: | :-------: |
-| __routes *__   | _array_   | array of route objects ([see example above](https://www.npmjs.com/package/react-breadcrumbs-light#routes))                  | -         |
-| separator      | _any_     | separator for crumbs                              | /         |
-| icons          | _boolean_ | whether to show icons                             | true      |
-| titles         | _boolean_ | whether to show titles                            | true      |
-| notFoundTitle  | _string_  | title for not found pages                  | 'Page Not Found' |
-| notFoundIcon   | _any_     | icon for not found pages                          | undefined |
-| customClasses  | _object_  | [classes](https://www.npmjs.com/package/react-breadcrumbs-light#customclasses) for each element of Breadcrumbs component                   | -         |
+| Title          | Type      | Description                                          | Default   |
+| :------------: | :-------: | :-----------------------------------------------:    | :-------: |
+| __routes *__   | _array_   | array of route objects ([see example above](#routes))| -         |
+| separator      | _any_     | separator for crumbs                                 | /         |
+| icons          | _boolean_ | whether to show icons                                | true      |
+| titles         | _boolean_ | whether to show titles                               | true      |
+| notFoundTitle  | _string_  | title for not found pages                     | 'Page Not Found' |
+| notFoundIcon   | _any_     | icon for not found pages                             | undefined |
+| customClasses  | _object_  | [classes](#customclasses) for each element of Breadcrumbs component | - |
 
 Similar to first required argument for Breadcrumbs service - __Routes__ array.
 
@@ -125,8 +123,8 @@ Similar to first required argument for Breadcrumbs service - __Routes__ array.
 | Title       | Type    | Description                   | Html Element              |
 | ----------- | ------- | ----------------------------- | ------------------------- |
 | root        | string  | class for root element        | nav 	                    |
-| list        | string  | class for list element        | ul 		                    |
-| link        | string  | class for link element        | a 	                      |
+| list        | string  | class for list element        | ul 		                |
+| link        | string  | class for link element        | a 	                    |
 | currentLink | string  | class for currentLink element | li   	                    |
 | icon        | string  | class for icon element        | span (holder for icon)    |
 | title       | string  | class for title element       | span 	                    |
