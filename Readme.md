@@ -1,6 +1,6 @@
 # React Breadcrumbs Light
 
-[![GitHub version](https://img.shields.io/badge/version-1.1.2-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![npm version](https://img.shields.io/npm/v/react-breadcrumbs-light.svg)](https://www.npmjs.com/package/react-breadcrumbs-light) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
+[![GitHub version](https://img.shields.io/badge/version-1.1.3-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![npm version](https://img.shields.io/npm/v/react-breadcrumbs-light.svg)](https://www.npmjs.com/package/react-breadcrumbs-light) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
 
 ## Demo
 
@@ -32,7 +32,7 @@ Provides function getBreadcrumbs, which returns an array of breadcrumbs. Example
 
 // Usage
 // Argument Routes is specified in next subsection
-const crumbs = getBreadcrumbs(Routes, window.location);
+const crumbs = getBreadcrumbs(Routes, window.location.pathname);
 
 // Returned array
 [
