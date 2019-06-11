@@ -52,11 +52,11 @@ const getBreadcrumbs = (
   // Iterate over paths and breadcrumbs unit
   paths.forEach((item, i, arr) => {
     /**
-    /*  Update link.
-    /*  First 2 conditions -> prevent duplicate '/'
-    /*  Last condition -> define whether to use or no '/' for first route
-    /*  depending on first
-    */
+     *  Update link.
+     *  First 2 conditions -> prevent duplicate '/'
+     *  Last condition -> define whether to use or no '/' for first route
+     *  depending on first
+     */
     link =
       link[link.length - 1] === '/' ||
       item[0] === '/' ||
@@ -80,7 +80,7 @@ const getBreadcrumbs = (
     if (route) prevRoute = route;
 
     // Define breadcrumbs unit title
-    const title: string = route
+    let title: string = route
       ? route.title
         ? findParam(route.link)
           ? decodeURIComponent(route.title + makeFirstLetterUp(item))
@@ -89,6 +89,10 @@ const getBreadcrumbs = (
       : notFoundTitle
         ? decodeURIComponent(notFoundTitle)
         : decodeURIComponent('Page Not Found');
+
+    // If suffix provided -> add it at the end of title
+    if (route && route.suffix)
+      title = title + route.suffix;
 
     // Define breadcrumbs unit icon
     const icon: any = route

@@ -1,7 +1,8 @@
 
+
 # React Breadcrumbs Light
 
-[![GitHub version](https://img.shields.io/badge/version-1.1.1-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![npm version](https://img.shields.io/badge/npm-v1.1.1-brightgreen.svg)](https://www.npmjs.com/package/react-breadcrumbs-light) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
+[![GitHub version](https://img.shields.io/badge/version-1.1.2-yellow.svg)](https://github.com/mopcweb/react-breadcrumbs-light/releases) [![npm version](https://img.shields.io/npm/v/react-breadcrumbs-light.svg)](https://www.npmjs.com/package/react-breadcrumbs-light) [![GitHub demo](https://img.shields.io/badge/demo-available-green.svg)](https://mopcweb.github.io/react-breadcrumbs-light) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE)
 
 ## Demo
 
@@ -25,75 +26,72 @@ npm i react-breadcrumbs-light
 
 ```
 
-## Breadcrumbs service (function getBreadcrumbs)
+## Breadcrumbs service
 
-Returns an array of breadcrumbs. Example:
+Provides function getBreadcrumbs, which returns an array of breadcrumbs. Example:
 
 ```js
 
+// Usage
+// Argument Routes is specified in next subsection
+const crumbs = getBreadcrumbs(Routes, window.location);
+
+// Returned array
 [
   { link: '/', title: 'Home', icon: 'any icon: string | html | component' },
   { link: '/clients', title: 'Clients', icon: '...' },
-  { link: '/clients/1', title: 'Client № - 1', icon: '...' }
+  { link: '/clients/1', title: 'Client № - 1, welcome!', icon: '...' }
 ]
 
 ```
 
-There are 2 require arguments and 2 optional:
+There are __2 required__ arguments and 2 optional:
 
-### Breadcrumbs service required arguments:
+| Title         | Type     | Description                                | Default          |
+| :-----:       | :------: | :----------------------------------------: | :--------------: |
+| __routes *__  | _array_  | array of route objects ([see example below](https://www.npmjs.com/package/react-breadcrumbs-light#routes))         | -                |
+| __fullUrl *__ | _string_ | current location full path ([see example below](https://www.npmjs.com/package/react-breadcrumbs-light#fullurl))        | -                |
+| notFoundTitle | _string_ | title for not found route                  | 'Page Not Found' |
+| notFoundIcon  | _any_    | icon for not found route                   | undefined        |
 
-1. __Routes__
+### Routes
 
-  Example:
+Example:
 
   ```js
 
   const Routes = [
     { title: 'Home', link: '/', icon: 'any icon: string | html | svg | component' },
     { title: 'Clients', link: '/clients', icon: '...', children: [
-      { title: 'Client № - ', link: '/clients/:id', icon: '...' },
+      { title: 'Client № - ', suffix: ', welcome!', link: '/clients/:id', icon: '...' },
       { title: 'Settings', link: '/clients/settings', icon: '✅' }
     ] }
   ];
 
   ```
 
-__Required fields:__
+__Fields:__
 
-| Title | Type   | Description      |
-| ----- | ------ | ---------------- |
-| link  | string | breadcrumb link  |
-
-
-__Optional fields:__
-
-| Title | Type   | Description      |
-| ----- | ------ | ---------------- |
-| title | string | breadcrumb title |
-| icon  | any    | breadcrumb icon  |
-
+| Title       | Type     | Description                                                       |
+| :---------: | :------: | :---------------------------------------------------------------: |
+| __link *__  | _string_ | breadcrumb link                                                   |
+| title       | _string_ | breadcrumb title                                                  |
+| suffix      | _string_ | breadcrumb suffix (added at the end of output breadcrumb title)   |
+| icon        | _any_    | breadcrumb icon                                                   |
+| children    | _array_  | array of objects, similar to Routes, for nested routes            |
 
 __Features__:
 
- - if __title__ is not provided, link will be used as breadcrumb title (First letter uppercased)
+ - If __title__ is not provided, link will be used as breadcrumb title (First letter uppercased)
  - __link__ field may contain dynamic routes (ex.: '/route/:id', just as react-router)
- - for dynamic routes 'title' field will be used together with current route, if provided.
+ - For dynamic routes 'title' field will be used as prefix for current pathname (first letter uppercased), if provided
 
- 2. __FullUrl__
+### FullUrl
 
   It should be a current location, for ex.:
 
  - __window.location.pathname__
- - if using withRouter HOC of react-router-dom: __location.pathname__ prop
-
-
-### Breadcrumbs service optional arguments:
-
-| Title         | Type   | Description               | Default          |
-| ------------- | ------ | ------------------------- | ---------------- |
-| notFoundTitle | string | title for not found route | 'Page Not Found' |
-| notFoundIcon  | any    | icon for not found route  | undefined        |
+ - If using withRouter HOC of react-router-dom: __location.pathname__ prop
 
 ## Breadcrumbs component
 
@@ -103,29 +101,26 @@ Example:
 
 ```js
 
-<Breadcrumbs routes={routes} />
+// Argument Routes is from section above
+<Breadcrumbs routes={Routes} />
 
 ```
 
-There is only 1 required argument. And bunch of optional.
+There is only 1 __required__ argument. And bunch of optional:
 
-### Breadcrumbs component required argument
+| Title          | Type      | Description                                       | Default   |
+| :------------: | :-------: | :-----------------------------------------------: | :-------: |
+| __routes *__   | _array_   | array of route objects ([see example above](https://www.npmjs.com/package/react-breadcrumbs-light#routes))                  | -         |
+| separator      | _any_     | separator for crumbs                              | /         |
+| icons          | _boolean_ | whether to show icons                             | true      |
+| titles         | _boolean_ | whether to show titles                            | true      |
+| notFoundTitle  | _string_  | title for not found pages                  | 'Page Not Found' |
+| notFoundIcon   | _any_     | icon for not found pages                          | undefined |
+| customClasses  | _object_  | [classes](https://www.npmjs.com/package/react-breadcrumbs-light#customclasses) for each element of Breadcrumbs component                   | -         |
 
-Similar to first required argument for Breadcrumbs service - __Routes__ array
+Similar to first required argument for Breadcrumbs service - __Routes__ array.
 
-### Breadcrumbs component optional argument
-
-| Title          | Type    | Description               | Default          |
-| -------------- | ------- | ------------------------- | ---------------- |
-| separator      | any     | separator for crumbs      | '/'              |
-| icons          | boolean | whether to show icons     | true             |
-| titles         | boolean | whether to show titles    | true             |
-| notFoundTitle  | string  | title for not found pages | 'Page Not Found' |
-| notFoundIcon   | any     | icon for not found pages  | undefined        |
-| customClasses  | object  | classes for each element of Breadcrumbs component | - |
-
-
-__customClasses__
+#### customClasses
 
 | Title       | Type    | Description                   | Html Element              |
 | ----------- | ------- | ----------------------------- | ------------------------- |
@@ -136,3 +131,7 @@ __customClasses__
 | icon        | string  | class for icon element        | span (holder for icon)    |
 | title       | string  | class for title element       | span 	                    |
 | separator   | string  | class for separator element   | li (holder for separator) |
+
+## License
+
+This project is licensed under the terms of the [MIT license](https://github.com/mopcweb/react-breadcrumbs-light/blob/master/LICENSE).

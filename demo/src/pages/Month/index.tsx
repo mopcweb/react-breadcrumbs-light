@@ -20,16 +20,11 @@ import Button from '@material-ui/core/Button';
 // =====> Routes
 import { calendar } from '../../utils/routes';
 
-// =====> Type
-type Props = {
-  classes: { [x: string]: string };
-};
-
 /* ------------------------------------------------------------------- */
 /*                              Component
 /* ------------------------------------------------------------------- */
 
-const Month: React.FC<Props> = () => {
+const Month: React.FC = () => {
   // Months
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June', 'July',
@@ -80,4 +75,4 @@ const getDaysInMonth = (month: number) =>
 /*                               Export
 /* ------------------------------------------------------------------- */
 
-export default Month
+export default Month;

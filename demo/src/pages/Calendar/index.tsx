@@ -20,16 +20,11 @@ import Button from '@material-ui/core/Button';
 // =====> Routes
 import { calendar } from '../../utils/routes';
 
-// =====> Type
-type Props = {
-  classes: { [x: string]: string };
-};
-
 /* ------------------------------------------------------------------- */
 /*                              Component
 /* ------------------------------------------------------------------- */
 
-const Calendar: React.FC<Props> = () => {
+const Calendar: React.FC = () => {
   // Months
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June', 'July',

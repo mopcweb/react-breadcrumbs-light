@@ -21,6 +21,7 @@ export interface IReactBreadcrumb {
 export interface IReactRoute {
   link: string;
   title?: string;
+  suffix?: string;
   icon?: any;
   children?: IReactRoute[];
 }

@@ -42,7 +42,7 @@ export const routes: IReactRoute[] = [
   { title: 'Home', link: home, icon: <HomeIcon /> },
   { title: 'Clients', link: clients, icon: <ListIcon />, children: [
     { title: 'Settings', link: clients + '/settings', icon: <SettingsIcon /> },
-    { title: 'Client № - ', link: clients + '/:id', icon: <PersonIcon /> }
+    { title: 'Client № - ', suffix: ', welcome!', link: clients + '/:id', icon: <PersonIcon /> }
   ] },
   { title: 'Calendar', link: calendar, icon: <CalendarTodayIcon />, children: [
     { title: 'Month: ', link: calendar + '/:month', icon: <TodayIcon />, children: [

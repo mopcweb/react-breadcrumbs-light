@@ -7,19 +7,10 @@
 import React, { Fragment } from 'react';
 
 /* ------------------------------------------------------------------- */
-/*                               Config
-/* ------------------------------------------------------------------- */
-
-// =====> Type
-type Props = {
-  classes: { [x: string]: string };
-};
-
-/* ------------------------------------------------------------------- */
 /*                              Component
 /* ------------------------------------------------------------------- */
 
-const Settings: React.FC<Props> = () => (
+const Settings: React.FC = () => (
   <Fragment>
     Settings works
   </Fragment>
@@ -29,4 +20,4 @@ const Settings: React.FC<Props> = () => (
 /*                               Export
 /* ------------------------------------------------------------------- */
 
-export default Settings
+export default Settings;

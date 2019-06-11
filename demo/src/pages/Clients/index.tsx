@@ -21,16 +21,11 @@ import Input from '@material-ui/core/Input';
 // =====> Routes
 import { clients } from '../../utils/routes';
 
-// =====> Type
-type Props = {
-  classes: { [x: string]: string };
-};
-
 /* ------------------------------------------------------------------- */
 /*                              Component
 /* ------------------------------------------------------------------- */
 
-const Clients: React.FC<Props> = () => {
+const Clients: React.FC = () => {
   // Default client
   const defaultClient: string = 'Some awesome client';
 

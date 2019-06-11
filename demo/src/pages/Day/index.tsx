@@ -20,16 +20,11 @@ import Button from '@material-ui/core/Button';
 // =====> Routes
 import { home } from '../../utils/routes';
 
-// =====> Type
-type Props = {
-  classes: { [x: string]: string };
-};
-
 /* ------------------------------------------------------------------- */
 /*                              Component
 /* ------------------------------------------------------------------- */
 
-const Day: React.FC<Props> = () => {
+const Day: React.FC = () => {
   // Current day
   const day: string = window.location.pathname.replace(/^\/.*\//, '');
 
