@@ -35,6 +35,7 @@ export type ReactBreadcrumbsProps = {
   separator?: any;
   icons?: boolean;
   titles?: boolean;
+  noTitlesOnMobile?: boolean;
   notFoundTitle?: string;
   notFoundIcon?: any;
   customClasses?: {

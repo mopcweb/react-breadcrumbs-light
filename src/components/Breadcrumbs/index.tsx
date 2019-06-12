@@ -28,8 +28,8 @@ import { getBreadcrumbs } from '../../services';
 /* ------------------------------------------------------------------- */
 
 const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
-   location, routes, separator, icons, titles, customClasses, notFoundTitle,
-   notFoundIcon
+   location, routes, separator, icons, titles, noTitlesOnMobile,
+   customClasses, notFoundTitle, notFoundIcon
 }) => {
   // Get all breadcrumbs
   const crumbs =
@@ -100,7 +100,8 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
 
           {titlesEnabled && item.title &&
             <span className={
-              `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
+              `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''} \
+              ${noTitlesOnMobile ? 'ReactBreadcrumbsLight-Title_hideOnMobile' : ''}`
             } style={{ WebkitBoxOrient: 'vertical' }}>
               {item.title}
             </span>}
@@ -137,7 +138,8 @@ const Crumbs: React.FC<ReactBreadcrumbsProps & RouteComponentProps> = ({
 
       {titlesEnabled && item.title &&
         <span className={
-          `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''}`
+          `ReactBreadcrumbsLight-Title ${titleClass ? ` ${titleClass}` : ''} \
+          ${noTitlesOnMobile ? 'ReactBreadcrumbsLight-Title_hideOnMobile' : ''}`
         } style={{ WebkitBoxOrient: 'vertical' }}>
           {item.title}
         </span>}

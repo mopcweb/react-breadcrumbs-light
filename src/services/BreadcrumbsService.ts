@@ -90,6 +90,10 @@ const getBreadcrumbs = (
         ? decodeURIComponent(notFoundTitle)
         : decodeURIComponent('Page Not Found');
 
+    // If route link === '/' || '' and no manually title provided
+    if (route && route.link.length <= 1)
+      title = 'Root';
+
     // If suffix provided -> add it at the end of title
     if (route && route.suffix)
       title = title + route.suffix;

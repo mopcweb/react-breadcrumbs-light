@@ -30,7 +30,7 @@ $currentColor: #ff4081
   color: $mainColor
 
   *
-    overflow-x: hidden
+    overflow: hidden
 
   @media screen and (max-width: 600px)
     padding: 0 $spacing * 2
@@ -56,6 +56,8 @@ $currentColor: #ff4081
     align-items: center
     width: auto
     height: 100%
+    color: $mainColor
+    text-decoration: none
 
     &_current
       color: $currentColor
@@ -68,6 +70,7 @@ $currentColor: #ff4081
     display: flex
     justify-content: center
     align-items: center
+    flex-shrink: 0
     width: auto
     height: 20px
 
@@ -92,11 +95,17 @@ $currentColor: #ff4081
     overflow: hidden
     word-break: break-word
 
+    &_hideOnMobile
+
+      @media screen and (max-width: 600px)
+        display: none
+
   &-Separator
     margin: 0 $spacing
     display: flex
     justify-content: center
     align-items: center
+    flex-shrink: 0
     width: auto
     height: auto
 
